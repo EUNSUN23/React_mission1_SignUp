@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Code Review
 
-## Available Scripts
+라이브러리없이 짠 회원가입페이지
 
-In the project directory, you can run:
+\*구현한 기능:
 
-### `yarn start`
+-영문소문자, 숫자, 특수문자 1개 이상 포함한 10자리
+이상의 아이디/12자리 이상의 비밀번호 validation & validation에 따라 border색 바뀌는 inputbox
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-아이디중복체크버튼
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+-아이디중복체크, 전체 form validation 결과에 따라 메시지 띄우는 modal
 
-### `yarn test`
+-윤년 반영되는 생년월일 seletbox
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-글자수 count되고 300자 limitaion있는 자기소개 textarea
 
-### `yarn build`
+\*도움되었던 강의링크
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+정규표현식 이용한 validation:
+https://youtu.be/NrzFle7RD0g
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+\*피드백
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-코드 리팩토링 tip
 
-### `yarn eject`
+1. 직접적으로 value값을 변화시키는 함수를 제외한 나머지 함수는 util폴더로 빼고, import해서 사용한다. (적용)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. state를 관리하는 메인container에서는 value값만 다뤄주고, 부수적인 config는 각 컴포넌트 파트별로 다뤄준다(적용되어야 할 부분)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-bootstrap : 잘 짜인 css를 가져다 쓸수있음.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+\*수정하면 좋을것:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+form구조:
+form 각 영역에 대한 isRequire 체크라던지 순수한 인풋데이터만 다뤄야할때 filter처리 해줘야 해서 에러가 많이 났음. form구조를 더 깔끔하게 효율적으로 짜는 방법 알면 좋을듯.
 
-## Learn More
+##TIL
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[20.10.30]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+\*코드 리팩토링
 
-### Code Splitting
+- 각종 변수명 수정
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- function 정리&분리
+  :전체 form validation함수,생년월일change함수 etc.
 
-### Analyzing the Bundle Size
+\*에러 해결
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- css class명 수정, 전체 렌더링될 때 버튼박스도 같이 렌더링되는 문제 해결
